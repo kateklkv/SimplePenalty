@@ -131,4 +131,4 @@ MonoBehaviour:
   rigidbody: {fileID: 1836809800387253111}
   throwForceInXY: 0.3
   throwForceInZ: 75
-  destroyTime: 5
+  destroyTime: 4

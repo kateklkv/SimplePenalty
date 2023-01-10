@@ -1,10 +1,13 @@
 using System.Collections;
+using Runtime.Ball;
 using UnityEngine;
 
 namespace Runtime.Target
 {
     public class TargetService : MonoBehaviour
     {
+        [SerializeField] private BallService ballService;
+        
         [SerializeField] private GameObject targetPrefab;
         [SerializeField] private float timeDestroyTarget;
 
@@ -14,7 +17,7 @@ namespace Runtime.Target
 
         private WaitForSeconds _waitForSeconds;
 
-        private void Start()
+        private void Awake()
         {
             _waitForSeconds = new WaitForSeconds(timeDestroyTarget);
             CreateTarget();
@@ -40,7 +43,11 @@ namespace Runtime.Target
             _targetTrigger.BallHit += ReplaceTarget;
         }
 
-        private void ReplaceTarget() => StartCoroutine(ReplaceTargetCoroutine());
+        private void ReplaceTarget()
+        {
+            ballService.UpdateScores();
+            StartCoroutine(ReplaceTargetCoroutine());
+        }
 
         private IEnumerator ReplaceTargetCoroutine()
         {
