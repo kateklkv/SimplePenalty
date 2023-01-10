@@ -30,6 +30,7 @@ namespace Runtime.Ball
         private void ThrowBall(Vector2 direction, float timeInterval)
         {
             rigidbody.isKinematic = false;
+            
             rigidbody.AddForce(
                 - direction.x * throwForceInXY, 
                 - direction.y * throwForceInXY, 
